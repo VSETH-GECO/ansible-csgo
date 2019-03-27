@@ -1,0 +1,24 @@
+rcon_password "{{sec['csfun']['pw']['rcon']}}"
+tv_password "{{sec['csfun']['pw']['tv']}}"
+
+{% for i in range(1,5) %}
+ alias gslt{{i}} "sv_setsteamaccount {{sec['csfun']['gslt' + nr|string]['t'+i|string]}}"
+ 
+ alias name{{i}} "hostname PolyLAN Fun#1;
+ alias aim hostname PolyLAN Fun#{{i}} @ Aim/Awp;
+ alias bar hostname PolyLAN Fun#{{i}} @ BattleRoyale;
+ alias m1v hostname PolyLAN Fun#{{i}} @ Multi1v1;
+ alias ctf hostname PolyLAN Fun#{{i}} @ CTF;
+ alias fiy hostname PolyLAN Fun#{{i}} @ FightYard;
+ alias ghs hostname PolyLAN Fun#{{i}} @ GhostStrike;
+ alias mig hostname PolyLAN Fun#{{i}} @ Minigames;
+ alias hor hostname PolyLAN Fun#{{i}} @ HostageRescue;
+ alias ret hostname PolyLAN Fun#{{i}} @ Retakes;
+ alias exc hostname PolyLAN Fun#{{i}} @ Executes"
+ alias pab  hostname PolyLAN Fun#{{i}} @ PaintBall; 
+ alias daz  hostname PolyLAN Fun#{{i}} @ Dangerzone; 
+ 
+ alias var{{i}} "gslt{{i}}; name{{i}}"
+ 
+ 
+{% endfor %}

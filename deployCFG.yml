@@ -1,0 +1,39 @@
+---
+-   name : Update cfgs and scripts for cs_ebot
+    hosts: csmatch, csfun
+    become_method: sudo
+    vars_files: secrets.yml
+    vars:
+        home: /home/{{ansible_ssh_user}}
+    tasks: 
+        -   name: copy configs to node
+            synchronize:
+                src: '{{group_names[0]}}/csgo'
+                dest: '{{home}}/cs'
+                
+        -   name: copy var template
+            template:
+                src: '{{group_names[0]}}/var.cfg.j2'
+                dest: '{{home}}/cs/csgo/cfg/var.cfg'   
+                
+        -   name: copy run.sh template
+            template:
+                src: '{{group_names[0]}}/run.sh.j2'
+                dest: '{{home}}/cs/run.sh'  
+                
+        -   name: make run.sh executable
+            file: 
+                path: '{{home}}/cs/run.sh'
+                mode: 0755
+                
+        -   name: copy service templates
+            template:
+                src: '{{group_names[0]}}/cs.service.j2'
+                dest: /etc/systemd/system/{{group_names[0]}}{{item}}.service
+            with_items:
+                - 1
+                - 2
+                - 3
+                - 4
+            
+            become: True

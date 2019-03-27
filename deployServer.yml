@@ -1,0 +1,68 @@
+---
+-   name : Install clean CS GO Dedicated Server
+    hosts: csmatch, csfun
+    become_method: sudo
+    vars_files: secrets.yml
+    vars:
+        home: /home/{{ansible_ssh_user}}
+    tasks:
+        -   name: install packages
+            apt: 
+                pkg: ['lib32gcc1', 'lib32stdc++6', 'nfs-common', 'screen', 'rsync', 'nocache']
+                update_cache: yes
+                cache_valid_time: 3600
+                state: present
+            become: True
+            
+        -   name: mkdir nfs mount
+            file:
+                path: '{{home}}/nas'
+                state: directory
+                
+        -   name: nfs mount freenas
+            mount:
+                path: '{{home}}/nas'
+                src: freenas.geco.local:/mnt/RAID1/csgo
+                fstype: nfs
+                state: mounted   
+                boot: False
+            become: True  
+            
+        -   name: download SteamCMD
+            get_url:
+                url:  http://media.steampowered.com/installer/steamcmd_linux.tar.gz
+                dest: '{{home}}/steamcmd_linux.tar.gz'
+                
+        -   name: create Steam dir
+            file:
+                path: '{{home}}/Steam'
+                state: directory
+                
+        -   name: unpack archive
+            unarchive:
+                src:  '{{home}}/steamcmd_linux.tar.gz'
+                dest: '{{home}}/Steam/'
+                copy: no     
+                
+        -   name: delete archive
+            file:
+                path: '{{home}}/steamcmd_linux.tar.gz'
+                state: absent  
+                
+        -   name: run SteamCMD
+            command: '{{home}}/Steam/steamcmd.sh +login anonymous +quit'            
+                
+        -   name: download CS:GO Dedicated Server
+            command: '{{home}}/Steam/steamcmd.sh +login anonymous +force_install_dir {{home}}/nas/cs_clean +app_update 740 +quit'
+            run_once: true
+            async: 3600
+            
+        -   name: copy clean_files to local node
+            command: nocache cp -r {{home}}/nas/cs_clean {{home}}/cs
+            async: 3600
+            
+        -   name: umount nfs freenas
+            mount:
+                path: '{{home}}/nas'
+                state: absent
+            become: True

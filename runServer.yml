@@ -1,0 +1,17 @@
+---
+-   name : Run csgo servers
+    hosts: csmatch, csfun
+    become_method: sudo
+    vars_files: secrets.yml
+    tasks: 
+        -   name: start service
+            service:
+                name: '{{group_names[0]}}{{item}}'
+                state: started
+                enabled: False
+            become: True
+            with_items:
+                - 1
+                - 2
+                - 3
+                - 4

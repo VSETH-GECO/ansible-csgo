@@ -1,0 +1,11 @@
+---
+-   name : updates CSGO Server
+    hosts: csmatch, csfun
+    become_method: sudo
+    vars_files: secrets.yml
+    vars:
+        home: /home/{{ansible_ssh_user}}
+    tasks:
+        
+        -   name: update CS:GO Dedicated Server
+            command: '{{home}}/Steam/steamcmd.sh +login anonymous +force_install_dir {{home}}/cs +app_update 740 +quit'

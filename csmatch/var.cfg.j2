@@ -1,0 +1,10 @@
+rcon_password "{{sec['csmatch']['pw']['rcon']}}"
+sv_password "{{sec['csmatch']['pw']['sv']}}"
+tv_password "{{sec['csmatch']['pw']['tv']}}"
+
+{% for i in range(1,5) %}
+ alias gslt{{i}} "sv_setsteamaccount {{sec['csmatch']['gslt' + nr|string]['t'+i|string]}}"
+ alias name{{i}} "hostname PolyLANMatch#{{nr|string}}.{{i}}; tv_name PolyTV#{{nr|string}}.{{i}}; tv_title PolyTV#{{nr|string}}.{{i}}"
+ alias var{{i}} "gslt{{i}}; name{{i}}"
+
+{% endfor %}

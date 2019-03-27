@@ -1,0 +1,181 @@
+"umc_mapcycle"
+{
+    "Aim Awp"
+    {
+		"maps_invote" "5" 
+		"default_min_players"   "0" 
+		"default_max_players"   "10" 
+		"pre-command"   "game_type 3"
+		"command"   "unload; mp_freezetime 0; mp_free_armor 1; mp_round_restart_delay 2; mp_forcecamera 1;mp_maxrounds 30; deadalltalk; aim"
+		
+        "aim_map_"{"display" "aim_map"}
+		"aim_map2"{}
+		"aim_redline"{}
+		"awp_india"{}
+		"awp_lego"{}
+    }
+	"BattleRoyale"
+	{
+		"maps_invote" "7" 
+		"default_min_players"   "0" 
+		"default_max_players"   "36" 
+		"pre-command"   "game_type 3"
+		"command"   "unload; bar; mp_maxrounds 10; deadalltalk; bhop; noteams"
+		
+		"br_drop"{}
+		"br_electrified"{}
+		"br_flood"{}
+		"br_killzones"{}
+		"br_ganla"{}
+		"br_advanced_ganla"{"display" "br_ganla2"}
+		"br_joreffe"{}	
+	}	
+	"Multi 1v1 Arena"
+	{
+		"maps_invote" "7" 
+		"default_min_players"   "0" 
+		"default_max_players"   "24" 
+		"pre-command"   "load_m1v1; game_type 3"
+		"command" "unload_retakes; unload_ghoststrike; unload_executes; unload_paintball; unload_dangerzone; sm_multi1v1_enabled 1; hl_challenge_enabled 1; mp_maxrounds 26; m1v"
+		
+		"am_cache_mid"{}
+		"am_mirage_a"{}
+		"am_mirage_b"{}
+		"am_mirage_mid"{}
+		"am_cbble_drop"{}
+		"am_loot"{}
+		"am_market"{}	
+	}
+	"CTF CapturePoints"
+	{
+		"maps_invote" "7" 
+		"default_min_players"   "0" 
+		"default_max_players"   "24" 
+		"pre-command"   "game_type 3"
+		"command"   "unload; mp_forcecamera 1; mp_halftime 1;teamtalk; bhop; ctf"
+		
+		"cp_castle"{}
+		"cp_colorland"{}
+		"cp_dust2"{}
+		"cp_rooftop"{}
+		"ctf_chicken"{}
+		"ctf_facingworlds"{}
+		"lcz_ctf_galaxy"{"display" "ctf_galaxy"}
+	}
+	"Fightyard"
+	{
+		"maps_invote" "10" 
+		"default_min_players"   "0" 
+		"default_max_players"   "20" 
+		"pre-command"   "game_type 3"
+		"command"   "unload; mp_freezetime 3; mp_forcecamera 1; mp_halftime 1; teamtalk; fiy"
+		
+		"fy_pool_day"{}
+		"fy_poolparty_v2"{}
+		"fy_poolparty_v6"{}
+		"fy_simpsons"{}
+		"fy_snow"{}
+		"fy_twotowers"{}
+		"mg_gravitylags"{}
+		"glass_war_csgo"{"display" "glass_war"}
+		"glass_war_gf_remake"{"display" "glass_war_remake"}
+		"breakfloor"{}
+	}
+	"GhostStrike"
+	{
+		"maps_invote" "7" 
+		"default_min_players"   "0" 
+		"default_max_players"   "9" 
+		"pre-command"   "load_ghoststrike; game_type 3"
+		"command" "unload_m1v1; unload_retakes; unload_executes; unload_paintball; unload_dangerzone; ghoststrike_enable 1; mp_forcecamera 1; mp_halftime 1; teamtalk; ghs"
+		
+		"de_cache"{}
+		"de_cbble"{}
+		"de_dust2"{}
+		"de_inferno"{}
+		"de_mirage"{}
+		"de_nuke"{}
+		"de_overpass"{}
+		"de_train"{}
+		
+	}
+	"MiniGames"
+	{
+		"maps_invote" "5" 
+		"default_min_players"   "0" 
+		"default_max_players"   "36" 
+		"pre-command"   "game_type 3"
+		"command"   "unload; bhop; mig"
+		
+		"mg_grands"{}
+		"mg_mario"{}
+		"mg_swag"{}
+		"mg_yolo"{}
+		"mg_pirates"{}
+	}
+	"Hostage Rescue"
+	{
+		"maps_invote" "3" 
+		"default_min_players"   "0" 
+		"default_max_players"   "10" 
+		"pre-command"   "game_type 3"
+		"command"   "unload; mp_forcecamera 1; mp_match_can_clinch 1; mp_halftime 1; mp_maxrounds 30; teamtalk; hor"
+		
+		"cs_office"{}
+		"cs_italy"{}
+		"cs_assault"{}
+	}
+	"Retakes"
+	{
+		"maps_invote" "8" 
+		"default_min_players"   "0" 
+		"default_max_players"   "9" 
+		"pre-command"   "load_retakes; game_type 3"
+		"command" "unload_m1v1; unload_ghoststrike; unload_executes; unload_paintball; unload_dangerzone; sm_retakes_enabled 1; mp_forcecamera 1; teamtalk; ret"
+		
+		"de_cache"{}
+		"de_cbble"{}
+		"de_dust2"{}
+		"de_inferno"{}
+		"de_mirage"{}
+		"de_nuke"{}
+		"de_overpass"{}
+		"de_train"{}
+		
+	}
+	"Executes"
+	{
+		"maps_invote" "5" 
+		"default_min_players"   "0" 
+		"default_max_players"   "10" 
+		"pre-command"   "load_executes; game_type 3"
+		"command" "unload_retakes; unload_m1v1; unload_ghoststrike;unload_paintball; unload_dangerzone; sm_executes_enabled 0; mp_forcecamera 1; mp_freezetime 0; teamtalk; exc"
+		
+		"de_cache"{}
+		"de_mirage"{}
+	}
+	"Paintball"
+	{
+		"maps_invote" "3" 
+		"default_min_players"   "2" 
+		"default_max_players"   "20" 
+		"pre-command"   "; game_type 3"
+		"command" "unload_retakes; unload_m1v1; unload_ghoststrike; unload_dangerzone; load_paintball; mp_forcecamera 1; mp_freezetime 0; teamtalk; bhop; pab"
+		
+		"paintball"{"display" "pb_paintball"}
+		"pb_airsoft"{}
+		"pb_ontop_hall"{"display" "pb_hall"}
+	}
+	"DangerZone"
+	{
+		"maps_invote" "1" 
+		"default_min_players"   "0" 
+		"default_max_players"   "10" 
+		"pre-command"   "game_type 6"
+		"command" "unload_retakes; unload_m1v1; unload_ghoststrike; unload_executes; unload_paintball; load_dangerzone; mp_forcecamera 1; mp_freezetime 0; teamtalk; daz; sv_dz_jointeam_allowed 1; bhop; teamtalk; deadtalk"
+		
+		"dz_blacksite"{"display" "Team of 1" "command" "sv_dz_team_count 1"}
+		"dz_blacksit"{"display" "Team of 2" "command" "sv_dz_team_count 2"}
+		"dz_blacksi"{"display" "Team of 4" "command" "sv_dz_team_count 4"}
+	}
+}
