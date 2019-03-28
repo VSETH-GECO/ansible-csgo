@@ -36,7 +36,7 @@
 		"default_min_players"   "0" 
 		"default_max_players"   "24" 
 		"pre-command"   "load_m1v1; game_type 3"
-		"command" "unload_retakes; unload_ghoststrike; unload_executes; unload_paintball; unload_dangerzone; sm_multi1v1_enabled 1; hl_challenge_enabled 1; mp_maxrounds 26; m1v"
+		"command" "unload_retakes; unload_ghoststrike; unload_executes; unload_paintball; unload_dangerzone; sm_multi1v1_enabled 1; hl_challenge_enabled 1; mp_maxrounds 26; sm_reloadroundtypes; m1v"
 		
 		"am_cache_mid"{}
 		"am_mirage_a"{}
@@ -149,7 +149,7 @@
 		"default_min_players"   "0" 
 		"default_max_players"   "10" 
 		"pre-command"   "load_executes; game_type 3"
-		"command" "unload_retakes; unload_m1v1; unload_ghoststrike;unload_paintball; unload_dangerzone; sm_executes_enabled 0; mp_forcecamera 1; mp_freezetime 0; teamtalk; exc"
+		"command" "unload_retakes; unload_m1v1; unload_ghoststrike;unload_paintball; unload_dangerzone; sm_executes_enabled 1; mp_forcecamera 1; mp_freezetime 0; teamtalk; exc"
 		
 		"de_cache"{}
 		"de_mirage"{}
@@ -157,7 +157,7 @@
 	"Paintball"
 	{
 		"maps_invote" "3" 
-		"default_min_players"   "2" 
+		"default_min_players"   "0" 
 		"default_max_players"   "20" 
 		"pre-command"   "; game_type 3"
 		"command" "unload_retakes; unload_m1v1; unload_ghoststrike; unload_dangerzone; load_paintball; mp_forcecamera 1; mp_freezetime 0; teamtalk; bhop; pab"
