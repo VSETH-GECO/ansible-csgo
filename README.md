@@ -10,8 +10,8 @@ Sources of plugins used in csfun:
 
 | Plugin | version / commit | source |
 | ------ | ------ | ------ |
-| MetaMod | 1.10 - build 968 | [sourcemm.net](https://www.sourcemm.net/downloads.php/?branch=stable) |
-| SourceMod | 1.9 - build 6275 | [sourcemod.net](https://www.sourcemod.net/downloads.php?branch=stable) |
+| MetaMod | 1.10 - build DEV 1127 | [sourcemm.net](https://www.sourcemm.net/downloads.php/?branch=stable) |
+| SourceMod | 1.9 - build 6276 | [sourcemod.net](https://www.sourcemod.net/downloads.php?branch=stable) |
 | UMC | 3.6.2 - d05adbe (clone)| [github.com](https://github.com/Silenci0/UMC) |
 | ServerAdvertisements 3 | f27fdfc (fork) | [github.com](https://github.com/Bara/ServerAdvertisement3) |
 | QuakeSounds v3  | 3.5.0 (patched) | [alliedmods.net](https://forums.alliedmods.net/showpost.php?p=2644440&postcount=431) |
@@ -32,9 +32,8 @@ Sources of plugins used in csfun:
 | GhostStrike  | 1.3.0 (from AlliedModders) | [github.com](https://github.com/kinsi55/CSGO-GhostStrike) |
 | executes  | #42 from jenkins | [github.com](https://github.com/splewis/csgo-executes) |
 | executes-spawns  | 7cb7d70 | [github.com](https://github.com/timche/csgo-executes-spawns) |
-| DangerZoneMenu  | -(not builded)  | [alliedmods.net](https://forums.alliedmods.net/showpost.php?p=2630896&postcount=6) |
 | Paintball  |  2.3.7  | [alliedmods.net](https://forums.alliedmods.net/showthread.php?t=287879) |
-
+| togdzteamselection  | -  | [alliedmods.net](https://forums.alliedmods.net/showthread.php?p=2633299) |
 
 ### additional remarks
 - We ran into trouble with the default volume caching settings of ProxMox VMs(ram and swap would be eaten up). It can be fixed by using writethrough as the cache setting.

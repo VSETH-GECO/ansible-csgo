@@ -145,7 +145,7 @@
 	}
 	"Executes"
 	{
-		"maps_invote" "5" 
+		"maps_invote" "2" 
 		"default_min_players"   "0" 
 		"default_max_players"   "10" 
 		"pre-command"   "load_executes; game_type 3"
@@ -168,14 +168,14 @@
 	}
 	"DangerZone"
 	{
-		"maps_invote" "1" 
-		"default_min_players"   "0" 
+		"maps_invote" "3" 
+		"default_min_players"   "999" 
 		"default_max_players"   "10" 
 		"pre-command"   "game_type 6"
-		"command" "unload_retakes; unload_m1v1; unload_ghoststrike; unload_executes; unload_paintball; load_dangerzone; mp_forcecamera 1; mp_freezetime 0; teamtalk; daz; sv_dz_jointeam_allowed 1; bhop; teamtalk; deadtalk"
+		"command" "unload_retakes; unload_m1v1; unload_ghoststrike; unload_executes; unload_paintball; load_dangerzone; mp_forcecamera 1; mp_freezetime 0; teamtalk; daz; bhop; teamtalk; deadtalk"
 		
 		"dz_blacksite"{"display" "Team of 1" "command" "sv_dz_team_count 1"}
 		"dz_blacksit"{"display" "Team of 2" "command" "sv_dz_team_count 2"}
-		"dz_blacksi"{"display" "Team of 4" "command" "sv_dz_team_count 4"}
+		"dz_blacksi"{"display" "Team of 3" "command" "sv_dz_team_count 3"}
 	}
 }
