@@ -6,6 +6,9 @@
     vars:
         home: /home/{{ansible_ssh_user}}
     tasks:
-        
+        -   name: delete Steam
+            file:
+                path: '{{home}}/Steam/'
+                state: absent
         -   name: update CS:GO Dedicated Server
-            command: '{{home}}/Steam/steamcmd.sh +login anonymous +force_install_dir {{home}}/cs +app_update 740 +quit'
+            command: '{{home}}/SteamCMD/steamcmd.sh +login anonymous +force_install_dir {{home}}/cs +app_update 740 +quit'

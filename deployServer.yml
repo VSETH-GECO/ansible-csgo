@@ -33,27 +33,27 @@
                 url:  http://media.steampowered.com/installer/steamcmd_linux.tar.gz
                 dest: '{{home}}/steamcmd_linux.tar.gz'
                 
-        -   name: create Steam dir
+        -   name: create SteamCMD dir
             file:
-                path: '{{home}}/Steam'
+                path: '{{home}}/SteamCMD'
                 state: directory
                 
         -   name: unpack archive
             unarchive:
                 src:  '{{home}}/steamcmd_linux.tar.gz'
-                dest: '{{home}}/Steam/'
+                dest: '{{home}}/SteamCMD/'
                 copy: no     
                 
         -   name: delete archive
             file:
                 path: '{{home}}/steamcmd_linux.tar.gz'
-                state: absent  
+                state: absent
                 
         -   name: run SteamCMD
-            command: '{{home}}/Steam/steamcmd.sh +login anonymous +quit'            
+            command: '{{home}}/SteamCMD/steamcmd.sh +login anonymous +quit'            
                 
         -   name: download CS:GO Dedicated Server
-            command: '{{home}}/Steam/steamcmd.sh +login anonymous +force_install_dir {{home}}/nas/cs_clean +app_update 740 +quit'
+            command: '{{home}}/SteamCMD/steamcmd.sh +login anonymous +force_install_dir {{home}}/nas/cs_clean +app_update 740 +quit'
             run_once: true
             async: 3600
             
