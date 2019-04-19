@@ -1,10 +1,10 @@
 ---
 -   name : Install clean CS GO Dedicated Server
-    hosts: csmatch, csfun
+    hosts: cs
+    gather_facts: False
     become_method: sudo
-    vars_files: secrets.yml
     vars:
-        home: /home/{{ansible_ssh_user}}
+        home: /home/{{service_user}}
     tasks:
         -   name: install packages
             apt: 
@@ -18,11 +18,12 @@
             file:
                 path: '{{home}}/nas'
                 state: directory
+                owner: '{{service_user}}'
                 
-        -   name: nfs mount freenas
+        -   name: nfs mount nas
             mount:
                 path: '{{home}}/nas'
-                src: freenas.geco.local:/mnt/RAID1/csgo
+                src: nas.lan.geco.ethz.ch:/mnt/RAID1/csgo
                 fstype: nfs
                 state: mounted   
                 boot: False
@@ -32,17 +33,20 @@
             get_url:
                 url:  http://media.steampowered.com/installer/steamcmd_linux.tar.gz
                 dest: '{{home}}/steamcmd_linux.tar.gz'
+                owner: '{{service_user}}'
                 
         -   name: create SteamCMD dir
             file:
                 path: '{{home}}/SteamCMD'
                 state: directory
+                owner: '{{service_user}}'
                 
         -   name: unpack archive
             unarchive:
                 src:  '{{home}}/steamcmd_linux.tar.gz'
                 dest: '{{home}}/SteamCMD/'
                 copy: no     
+                owner: '{{service_user}}'
                 
         -   name: delete archive
             file:
@@ -50,16 +54,22 @@
                 state: absent
                 
         -   name: run SteamCMD
-            command: '{{home}}/SteamCMD/steamcmd.sh +login anonymous +quit'            
+            command: '{{home}}/SteamCMD/steamcmd.sh +login anonymous +quit'  
+            become: yes
+            become_user: '{{service_user}}'
                 
         -   name: download CS:GO Dedicated Server
             command: '{{home}}/SteamCMD/steamcmd.sh +login anonymous +force_install_dir {{home}}/nas/cs_clean +app_update 740 +quit'
             run_once: true
             async: 3600
+            become: yes
+            become_user: '{{service_user}}'
             
         -   name: copy clean_files to local node
             command: nocache cp -r {{home}}/nas/cs_clean {{home}}/cs
             async: 3600
+            become: yes
+            become_user: '{{service_user}}'
             
         -   name: umount nfs freenas
             mount:

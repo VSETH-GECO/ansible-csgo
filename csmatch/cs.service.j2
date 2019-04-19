@@ -2,11 +2,11 @@
 Description=CSGO Match Server {{nr}}.{{item}}
 
 [Service]
-User={{ ansible_ssh_user }}
-Group={{ ansible_ssh_user }}
-WorkingDirectory=/home/{{ ansible_ssh_user }}/cs
+User={{service_user}}
+Group={{service_user}}
+WorkingDirectory=/home/{{service_user}}/cs
 
-ExecStart=/home/{{ ansible_ssh_user }}/cs/run.sh {{item}}
+ExecStart=/home/{{service_user}}/cs/run.sh {{item}}
 ExecStop=/usr/bin/screen -S csmatch{{nr}}.{{item}} -X stuff 'quit\n'
 ExecStop=/usr/bin/sleep 10
 ExecStop=/usr/bin/screen -S csmatch{{nr}}.{{item}} -X kill

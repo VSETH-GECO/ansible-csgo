@@ -1,8 +1,16 @@
 [csmatch]
-csmatch1 ansible_host=10.10.0.21 ansible_port=22 ansible_become_pass={{sec.become_pw.csmatch1}} nr=1
-csmatch2 ansible_host=10.10.0.22 ansible_port=22 ansible_become_pass={{sec.become_pw.csmatch2}} nr=2
-csmatch3 ansible_host=10.10.0.23 ansible_port=22 ansible_become_pass={{sec.become_pw.csmatch3}} nr=3
-csmatch4 ansible_host=10.10.0.24 ansible_port=22 ansible_become_pass={{sec.become_pw.csmatch4}} nr=4
+csmatch1 ansible_host=csmatch1 nr=1
+csmatch2 ansible_host=csmatch2 nr=2
+csmatch3 ansible_host=csmatch3 nr=3
+csmatch4 ansible_host=csmatch4 nr=4
 
 [csfun]
-csfun1 ansible_host=10.10.0.25 ansible_port=22 ansible_become_pass={{sec.become_pw.csfun1}} nr=1
+csfun1 ansible_host=csfun1 nr=1
+
+[cs:children]
+csmatch
+csfun
+
+[cs:vars]
+ansible_port=22
+service_user=geco

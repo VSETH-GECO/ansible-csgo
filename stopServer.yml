@@ -1,12 +1,12 @@
 ---
 -   name : stop cs servers
-    hosts: csmatch, csfun
+    hosts: cs
+    gather_facts: False
     become_method: sudo
-    vars_files: secrets.yml
     tasks: 
         -   name: stop service
             service:
-                name: '{{group_names[0]}}{{item}}'
+                name: '{{group_names[1]}}{{item}}'
                 state: stopped
                 enabled: False
             become: True
