@@ -19,12 +19,14 @@
                 src: '{{group_names[1]}}/var.cfg.j2'
                 dest: '{{home}}/cs/csgo/cfg/var.cfg'
                 owner: '{{service_user}}'
+                group:  '{{service_user}}'
                 
         -   name: copy run.sh template
             template:
                 src: '{{group_names[1]}}/run.sh.j2'
                 dest: '{{home}}/cs/run.sh'
                 owner: '{{service_user}}'
+                group:  '{{service_user}}'
                 mode: 0755
                 
         -   name: copy service templates

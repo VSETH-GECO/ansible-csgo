@@ -1,11 +1,11 @@
 [csmatch]
-csmatch1 ansible_host=csmatch1 nr=1
-csmatch2 ansible_host=csmatch2 nr=2
-csmatch3 ansible_host=csmatch3 nr=3
-csmatch4 ansible_host=csmatch4 nr=4
+csmatch1.lan.geco.ethz.ch nr=1
+csmatch2.lan.geco.ethz.ch nr=2
+csmatch3.lan.geco.ethz.ch nr=3
+csmatch4.lan.geco.ethz.ch nr=4
 
 [csfun]
-csfun1 ansible_host=csfun1 nr=1
+csfun1.lan.geco.ethz.ch nr=1
 
 [cs:children]
 csmatch

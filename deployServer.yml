@@ -19,6 +19,7 @@
                 path: '{{home}}/nas'
                 state: directory
                 owner: '{{service_user}}'
+                group:  '{{service_user}}'
                 
         -   name: nfs mount nas
             mount:
@@ -34,12 +35,14 @@
                 url:  http://media.steampowered.com/installer/steamcmd_linux.tar.gz
                 dest: '{{home}}/steamcmd_linux.tar.gz'
                 owner: '{{service_user}}'
+                group:  '{{service_user}}'
                 
         -   name: create SteamCMD dir
             file:
                 path: '{{home}}/SteamCMD'
                 state: directory
                 owner: '{{service_user}}'
+                group:  '{{service_user}}'
                 
         -   name: unpack archive
             unarchive:
@@ -47,6 +50,7 @@
                 dest: '{{home}}/SteamCMD/'
                 copy: no     
                 owner: '{{service_user}}'
+                group:  '{{service_user}}'
                 
         -   name: delete archive
             file:
