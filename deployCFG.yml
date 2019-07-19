@@ -7,23 +7,37 @@
     vars:
         home: /home/{{service_user}}
     tasks: 
-        -   name: copy configs to node
+        -   name: copy common files to node
+            synchronize:
+                src: 'common/csgo'
+                dest: '{{home}}/cs'
+            become: yes
+            become_user: '{{service_user}}'
+            
+        -   name: copy specific files to node
             synchronize:
                 src: '{{group_names[1]}}/csgo'
                 dest: '{{home}}/cs'
             become: yes
             become_user: '{{service_user}}'
             
-        -   name: copy var template
+        -   name: copy name template
             template:
-                src: '{{group_names[1]}}/var.cfg.j2'
-                dest: '{{home}}/cs/csgo/cfg/var.cfg'
+                src: '{{group_names[1]}}/name.cfg.j2'
+                dest: '{{home}}/cs/csgo/cfg/name.cfg'
+                owner: '{{service_user}}'
+                group:  '{{service_user}}'
+                
+        -   name: copy sec template
+            template:
+                src: 'common/sec.cfg.j2'
+                dest: '{{home}}/cs/csgo/cfg/sec.cfg'
                 owner: '{{service_user}}'
                 group:  '{{service_user}}'
                 
         -   name: copy run.sh template
             template:
-                src: '{{group_names[1]}}/run.sh.j2'
+                src: 'common/run.sh.j2'
                 dest: '{{home}}/cs/run.sh'
                 owner: '{{service_user}}'
                 group:  '{{service_user}}'
@@ -31,7 +45,7 @@
                 
         -   name: copy service templates
             template:
-                src: '{{group_names[1]}}/cs.service.j2'
+                src: 'common/cs.service.j2'
                 dest: /etc/systemd/system/{{group_names[1]}}{{item}}.service
             with_items:
                 - 1

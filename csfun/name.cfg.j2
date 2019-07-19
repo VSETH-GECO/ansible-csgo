@@ -1,0 +1,17 @@
+{% for i in range(1,5) %}
+ alias name{{i}} "hostname PolyFUN#{{i}};
+ alias aim hostname PolyFUN#{{i}} @ Aim/Awp;
+ alias bar hostname PolyFUN#{{i}} @ BattleRoyale;
+ alias m1v hostname PolyFUN#{{i}} @ Multi1v1;
+ alias ctf hostname PolyFUN#{{i}} @ CTF;
+ alias fiy hostname PolyFUN#{{i}} @ FightYard;
+ alias ghs hostname PolyFUN#{{i}} @ GhostStrike;
+ alias mig hostname PolyFUN#{{i}} @ Minigames;
+ alias hor hostname PolyFUN#{{i}} @ HostageRescue;
+ alias ret hostname PolyFUN#{{i}} @ Retakes;
+ alias exc hostname PolyFUN#{{i}} @ Executes;
+ alias pab  hostname PolyFUN#{{i}} @ PaintBall; 
+ alias daz  hostname PolyFUN#{{i}} @ Dangerzone;
+ tv_name TV PolyFUN#{{nr|string}}.{{i}};
+ tv_title TV PolyFUN#{{nr|string}}.{{i}}"
+{% endfor %}

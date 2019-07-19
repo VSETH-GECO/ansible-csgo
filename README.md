@@ -2,15 +2,18 @@
 
 
 **Important:**
-* Maps at csfun\csgo\maps need to be downloaded from: [polybox.ethz.ch](https://polybox.ethz.ch/index.php/s/tjCQPKYIl03q7Rj)
-* FastDL files are here: [polybox.ethz.ch](https://polybox.ethz.ch/index.php/s/0WncJV1E3MAFgPw)
+Maps and FastDL files are quite big and therefore hosted separately.
+Maps need to be placed at csfun/csgo/maps before deployment.
+FastDL files need to be hosted on a webserver pointed at by sv_downloadurl in pre.cfg in common/csgo/cfg/pre.cfg.
 
+* Maps: [polybox.ethz.ch](https://polybox.ethz.ch/index.php/s/tjCQPKYIl03q7Rj)
+* FastDL files: [polybox.ethz.ch](https://polybox.ethz.ch/index.php/s/0WncJV1E3MAFgPw)
 
 Sources of plugins used in csfun:
 
 | Plugin | version / commit | source |
 | ------ | ------ | ------ |
-| MetaMod | 1.10 - build DEV 1127 | [sourcemm.net](https://www.sourcemm.net/downloads.php/?branch=stable) |
+| MetaMod | 1.10 - build DEV 1127 | [sourcemm.net](https://www.sourcemm.net/downloads.php/?branch=master) |
 | SourceMod | 1.9 - build 6276 | [sourcemod.net](https://www.sourcemod.net/downloads.php?branch=stable) |
 | UMC | 3.6.2 - d05adbe (clone)| [github.com](https://github.com/Silenci0/UMC) |
 | ServerAdvertisements 3 | f27fdfc (fork) | [github.com](https://github.com/Bara/ServerAdvertisement3) |
@@ -35,5 +38,12 @@ Sources of plugins used in csfun:
 | Paintball  |  2.3.7  | [alliedmods.net](https://forums.alliedmods.net/showthread.php?t=287879) |
 | togdzteamselection  | -  | [alliedmods.net](https://forums.alliedmods.net/showthread.php?p=2633299) |
 
+Sources of plugins used in cspug:
+| Plugin | version / commit | source |
+| ------ | ------ | ------ |
+| MetaMod | 1.10 - build DEV 1127 | [sourcemm.net](https://www.sourcemm.net/downloads.php/?branch=master) |
+| SourceMod | 1.9 - build 6276 | [sourcemod.net](https://www.sourcemod.net/downloads.php?branch=stable) |
+| pug-setup | 2.0.5 | [github.com](https://github.com/splewis/csgo-pug-setup/releases) |
 ### additional remarks
-- We ran into trouble with the default volume caching settings of ProxMox VMs(ram and swap would be eaten up). It can be fixed by using writethrough as the cache setting.
+- We ran into trouble with the default volume caching settings of ProxMox VMs(ram and swap would be eaten up). 
+-'Fixed' by using writethrough as the cache setting.

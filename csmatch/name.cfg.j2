@@ -1,0 +1,5 @@
+{% for i in range(1,5) %}
+ alias name{{i}} "hostname PolyMatch#{{nr|string}}.{{i}};
+ tv_name TV PolyMatch#{{nr|string}}.{{i}};
+ tv_title TV PolyMatch#{{nr|string}}.{{i}}"
+{% endfor %}

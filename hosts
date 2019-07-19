@@ -4,8 +4,20 @@ csmatch2.lan.geco.ethz.ch nr=2
 csmatch3.lan.geco.ethz.ch nr=3
 csmatch4.lan.geco.ethz.ch nr=4
 
+[csmatch:vars]
+port=30
+
+[cspug]
+cspug.lan.geco.ethz.ch nr=1
+
+[cspug:vars]
+port=20
+
 [csfun]
-csfun1.lan.geco.ethz.ch nr=1
+csfun.lan.geco.ethz.ch nr=1
+
+[csfun:vars]
+port=14
 
 [cs:children]
 csmatch

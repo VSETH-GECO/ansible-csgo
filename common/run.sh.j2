@@ -1,0 +1,16 @@
+#!/bin/bash
+if [[ $1 =~ ^[1-4]{1}$ ]]
+then
+	if ! screen -list | grep -q {{group_names[1]}}{{nr}}.$1 ; then
+		IP=$(hostname -I | awk '{print substr($1,1)   }')
+		PORT=$(( 270{{port}}+$1 ))
+		TVPORT=$(( 271{{port}}+$1 ))
+		screen -dmS {{group_names[1]}}{{nr}}.$1
+		screen -S {{group_names[1]}}{{nr}}.$1 -X stuff "./srcds_run -game csgo -console -usercon -tickrate 128 +exec pre +var$1 -port $PORT +tv_port $TVPORT +ip $IP +map aim_redline\n"
+		echo Started {{group_names[1]}}{{nr}}.$1 on $IP:$PORT/:$TVPORT
+	else
+		echo Screen {{group_names[1]}}{{nr}}.$1 is already running.
+	fi
+else
+	echo Use parameter between 1-4
+fi
