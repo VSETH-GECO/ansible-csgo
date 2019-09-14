@@ -1,8 +1,10 @@
-rcon_password "{{sec['{{group_names[1]}}']['pw']['rcon']}}"
-sv_password "{{sec['{{group_names[1]}}']['pw']['sv']}}"
-tv_password "{{sec['{{group_names[1]}}']['pw']['tv']}}"
+rcon_password "{{sec[grpname]['pw']['rcon']}}"
+tv_password "{{sec[grpname]['pw']['tv']}}"
+{% if grpname == 'csmatch' %}
+	sv_password "{{sec[grpname]['pw']['sv']}}"
+{% endif %}
 
 {% for i in range(1,5) %}
- alias gslt{{i}} "sv_setsteamaccount {{sec['{{group_names[1]}}']['gslt' + nr|string]['t'+i|string]}}"
+ alias gslt{{i}} "sv_setsteamaccount {{sec[grpname]['gslt' + nr|string]['t'+i|string]}}"
  alias var{{i}} "gslt{{i}}; name{{i}}"
 {% endfor %}

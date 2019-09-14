@@ -4,25 +4,19 @@ csmatch2.lan.geco.ethz.ch nr=2
 csmatch3.lan.geco.ethz.ch nr=3
 csmatch4.lan.geco.ethz.ch nr=4
 
-[csmatch:vars]
-port=30
-
 [cspug]
-cspug.lan.geco.ethz.ch nr=1
-
-[cspug:vars]
-port=20
+cspug1.lan.geco.ethz.ch nr=1
 
 [csfun]
-csfun.lan.geco.ethz.ch nr=1
-
-[csfun:vars]
-port=14
+csfun1.lan.geco.ethz.ch nr=1
 
 [cs:children]
 csmatch
 csfun
+cspug
 
 [cs:vars]
+port=14
 ansible_port=22
 service_user=geco
+grpname = {{group_names[1]}}

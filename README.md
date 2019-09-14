@@ -13,8 +13,8 @@ Sources of plugins used in csfun:
 
 | Plugin | version / commit | source |
 | ------ | ------ | ------ |
-| MetaMod | 1.10 - build DEV 1127 | [sourcemm.net](https://www.sourcemm.net/downloads.php/?branch=master) |
-| SourceMod | 1.9 - build 6276 | [sourcemod.net](https://www.sourcemod.net/downloads.php?branch=stable) |
+| MetaMod | 1.10 - build Stable 971 | [sourcemm.net](https://www.sourcemm.net/downloads.php/?branch=stable) |
+| SourceMod | 1.9 - Stable build 6282 | [sourcemod.net](https://www.sourcemod.net/downloads.php?branch=stable) |
 | UMC | 3.6.2 - d05adbe (clone)| [github.com](https://github.com/Silenci0/UMC) |
 | ServerAdvertisements 3 | f27fdfc (fork) | [github.com](https://github.com/Bara/ServerAdvertisement3) |
 | QuakeSounds v3  | 3.5.0 (patched) | [alliedmods.net](https://forums.alliedmods.net/showpost.php?p=2644440&postcount=431) |
@@ -39,11 +39,13 @@ Sources of plugins used in csfun:
 | togdzteamselection  | -  | [alliedmods.net](https://forums.alliedmods.net/showthread.php?p=2633299) |
 
 Sources of plugins used in cspug:
+
 | Plugin | version / commit | source |
 | ------ | ------ | ------ |
-| MetaMod | 1.10 - build DEV 1127 | [sourcemm.net](https://www.sourcemm.net/downloads.php/?branch=master) |
-| SourceMod | 1.9 - build 6276 | [sourcemod.net](https://www.sourcemod.net/downloads.php?branch=stable) |
+| MetaMod | 1.10 - build Stable 971 | [sourcemm.net](https://www.sourcemm.net/downloads.php/?branch=stable) |
+| SourceMod | 1.9 - Stable build 6282 | [sourcemod.net](https://www.sourcemod.net/downloads.php?branch=stable) |
 | pug-setup | 2.0.5 | [github.com](https://github.com/splewis/csgo-pug-setup/releases) |
+
 ### additional remarks
 - We ran into trouble with the default volume caching settings of ProxMox VMs(ram and swap would be eaten up). 
 -'Fixed' by using writethrough as the cache setting.
