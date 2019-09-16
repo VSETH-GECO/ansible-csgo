@@ -1,0 +1,17 @@
+{
+	"defaultPollInterval": 15,
+	"servers": [
+		{% for h in groups[item] %}
+		{% for i in range(1,5) %}
+		{
+			"address": "{{h}}:{{27014+i}}",
+			"password": "{{sec[item]['pw']['rcon']}}"
+		},
+		{% endfor %}
+		{% endfor %}
+		{
+			"address": "127.0.0.1:27015",
+			"password": "12345"
+		}
+	]
+}

@@ -1,0 +1,8 @@
+#!/bin/bash
+if ! screen -list | grep -q ${1}Monitor ; then
+	screen -dmS ${1}Monitor
+	screen -S ${1}Monitor -X stuff "node ${1}_index.js\n"
+	echo Started ${1}Monitor
+else
+	echo Screen ${1}Monitor is already running.
+fi

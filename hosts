@@ -20,3 +20,9 @@ port=14
 ansible_port=22
 service_user=geco
 grpname = {{group_names[1]}}
+
+[csmon]
+csmon.lan.geco.ethz.ch
+[csmon:vars]
+service_user=geco
+group=['csmatch', 'cspug', 'csfun']

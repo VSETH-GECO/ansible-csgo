@@ -1,0 +1,20 @@
+[Unit]
+Description={{item}} Monitoring Server
+
+[Service]
+User={{service_user}}
+Group={{service_user}}
+WorkingDirectory=/home/{{service_user}}/csmon
+
+ExecStart={{home}}/csmon/run.sh {{item}}
+ExecStop=/usr/bin/screen -S {{item}}Monitor -X stuff 'quit\n'
+ExecStop=/usr/bin/sleep 10
+ExecStop=/usr/bin/screen -S {{item}}Monitor -X kill
+
+Type=forking
+RemainAfterExit=true
+RestartSec=15
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

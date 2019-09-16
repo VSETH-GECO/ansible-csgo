@@ -1,0 +1,96 @@
+---
+-   name : Setup CS Monitor
+    hosts: csmon
+    roles:
+    gather_facts: False
+    become_method: sudo
+    vars_files: secrets.yml
+    vars:
+        home: /home/{{service_user}}
+    tasks:      
+            
+        -   name: nodejs dload
+            get_url:
+                url: 'https://deb.nodesource.com/setup_8.x'
+                dest: '{{home}}/install.x'
+                mode: '0764'
+                
+        -   name: nodejs add
+            command: '{{home}}/install.x'    
+    
+            
+        -   name: install packages
+            apt: 
+                pkg: ['nodejs', 'npm', 'git', 'screen']
+                update_cache: yes
+                cache_valid_time: 3600
+                state: present         
+            
+        -   name: clone csmon
+            git:
+                repo: 'https://github.com/OpenSourceLAN/srcds-perfmon.git'
+                dest: '{{home}}/csmon'
+            become: yes
+            become_user: '{{service_user}}'
+                
+        -   name: copy indexes
+            copy:
+                src: '{{home}}/csmon/index.js'
+                dest: '{{home}}/csmon/{{item}}_index.js'
+                remote_src: yes
+                owner: '{{service_user}}'
+            loop: "{{group}}"
+            
+        -   name: change config sources
+            replace:
+                path: '{{home}}/csmon/{{item}}_index.js'
+                regexp: 'config.json'
+                replace: '{{item}}_config.json'
+            loop: "{{group}}"
+            
+        -   name: change ports
+            replace:
+                path: '{{home}}/csmon/{{item}}_index.js'
+                regexp: '9999'
+                replace: '{{10000 + index}}'
+            loop: "{{group}}"
+            loop_control:
+                index_var: index
+                
+        -   name: copy cfg template
+            template:
+                src: 'csmon/config.json.j2'
+                dest: '{{home}}/csmon/{{item}}_config.json'
+                owner: '{{service_user}}'
+            loop: "{{group}}"
+            
+        -   name: npm install
+            command: npm install
+            args:
+                chdir: '{{home}}/csmon'
+            become: yes
+            become_user: '{{service_user}}'
+            
+        -   name: copy run.sh template
+            template:
+                src: 'csmon/run.sh.j2'
+                dest: '{{home}}/csmon/run.sh'
+                owner: '{{service_user}}'
+                group:  '{{service_user}}'
+                mode: 0755
+            
+        -   name: copy service templates
+            template:
+                src: 'csmon/csmon.service.j2'
+                dest: '/etc/systemd/system/{{item}}_csmon.service'
+            loop: "{{group}}"
+            
+        -   name: reload service
+            command: systemctl daemon-reload
+            
+        -   name: enable service
+            service:
+                name: '{{item}}_csmon'
+                state: started
+                enabled: True
+            loop: "{{group}}"
