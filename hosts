@@ -18,6 +18,7 @@ cspug
 [cs:vars]
 port=14
 ansible_port=22
+fastdl_url="http://files.lan.geco.ethz.ch/fastdl"
 service_user=geco
 grpname = {{group_names[1]}}
 

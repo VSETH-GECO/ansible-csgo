@@ -4,7 +4,7 @@
 **Important:**
 Maps and FastDL files are quite big and therefore hosted separately.
 Maps need to be placed at csfun/csgo/maps before deployment.
-FastDL files need to be hosted on a webserver pointed at by sv_downloadurl in pre.cfg in common/csgo/cfg/pre.cfg.
+FastDL files need to be hosted on a webserver pointed at by fastdl_url in hosts.
 
 * Maps: [polybox.ethz.ch](https://polybox.ethz.ch/index.php/s/tjCQPKYIl03q7Rj)
 * FastDL files: [polybox.ethz.ch](https://polybox.ethz.ch/index.php/s/0WncJV1E3MAFgPw)
