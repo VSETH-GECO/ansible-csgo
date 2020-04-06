@@ -1,0 +1,48 @@
+---               
+-   name : Download CS Server, distribute with P2P transfers
+    hosts: cs
+    serial:
+    - 1
+    - 1
+    - 2
+    - 4
+    - 8
+    - 16
+    - 32
+    gather_facts: False
+    become_method: sudo
+    vars:
+        home: /home/{{service_user}}
+    tasks:
+
+        -   name: download CS:GO Dedicated Server
+            command: '{{home}}/SteamCMD/steamcmd.sh +login anonymous +force_install_dir {{home}}/cs +app_update 740 +quit'
+            async: 3600
+            become: yes
+            become_user: '{{service_user}}'
+            when: ansible_play_batch[0] == ansible_play_hosts_all[0]
+
+        -   name: start p2p screen
+            shell: 'screen -dmS p2pScreen'
+            become: yes
+            become_user: '{{service_user}}'
+            when: ansible_play_batch[0] != ansible_play_hosts_all[0]
+        
+        -   name: listen for transfer
+            shell: "screen -S p2pScreen -X stuff 'nc -n -q 1 -l -p 1234 | tar xv -C {{home}}\n'"
+            become: yes
+            become_user: '{{service_user}}'
+            when: ansible_play_batch[0] != ansible_play_hosts_all[0]
+
+        -   name: send to listener
+            shell: 'tar cv -C {{home}} cs | nc -n -q 1 {{inventory_hostname}} 1234'
+            delegate_to: '{{ansible_play_hosts_all[ansible_play_batch.index(inventory_hostname)]}}'
+            become: yes
+            become_user: '{{service_user}}'
+            when: ansible_play_batch[0] != ansible_play_hosts_all[0]
+        
+        -   name: kill p2p screen
+            shell: 'screen -S p2pScreen -X kill'
+            become: yes
+            become_user: '{{service_user}}'
+            when: ansible_play_batch[0] != ansible_play_hosts_all[0]

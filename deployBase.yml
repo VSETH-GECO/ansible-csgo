@@ -1,5 +1,5 @@
 ---
--   name : Install clean CS GO Dedicated Server
+-   name : Install Base
     hosts: cs
     gather_facts: False
     become_method: sudo
@@ -8,27 +8,11 @@
     tasks:
         -   name: install packages
             apt: 
-                pkg: ['lib32gcc1', 'lib32stdc++6', 'nfs-common', 'screen', 'rsync', 'nocache']
+                pkg: ['lib32gcc1', 'lib32stdc++6', 'screen', 'rsync', 'netcat-openbsd', 'nocache']
                 update_cache: yes
                 cache_valid_time: 3600
                 state: present
             become: True
-            
-        -   name: mkdir nfs mount
-            file:
-                path: '{{home}}/nas'
-                state: directory
-                owner: '{{service_user}}'
-                group:  '{{service_user}}'
-                
-        -   name: nfs mount nas
-            mount:
-                path: '{{home}}/nas'
-                src: nas.lan.geco.ethz.ch:/mnt/RAID1/csgo
-                fstype: nfs
-                state: mounted   
-                boot: False
-            become: True  
             
         -   name: download SteamCMD
             get_url:
@@ -61,22 +45,3 @@
             command: '{{home}}/SteamCMD/steamcmd.sh +login anonymous +quit'  
             become: yes
             become_user: '{{service_user}}'
-                
-        -   name: download CS:GO Dedicated Server
-            command: '{{home}}/SteamCMD/steamcmd.sh +login anonymous +force_install_dir {{home}}/nas/cs_clean +app_update 740 +quit'
-            run_once: true
-            async: 3600
-            become: yes
-            become_user: '{{service_user}}'
-            
-        -   name: copy clean_files to local node
-            command: nocache cp -r {{home}}/nas/cs_clean {{home}}/cs
-            async: 3600
-            become: yes
-            become_user: '{{service_user}}'
-            
-        -   name: umount nfs freenas
-            mount:
-                path: '{{home}}/nas'
-                state: absent
-            become: True

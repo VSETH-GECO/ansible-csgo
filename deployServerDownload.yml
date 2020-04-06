@@ -1,0 +1,14 @@
+---             
+-   name : Download CS Server on each node
+    hosts: cs
+    gather_facts: False
+    become_method: sudo
+    vars:
+        home: /home/{{service_user}}
+    tasks:
+
+        -   name: download CS:GO Dedicated Server
+            command: '{{home}}/SteamCMD/steamcmd.sh +login anonymous +force_install_dir {{home}}/cs +app_update 740 +quit'
+            async: 3600
+            become: yes
+            become_user: '{{service_user}}'
